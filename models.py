@@ -1,7 +1,7 @@
 import sqlalchemy as sqa
 from sqlalchemy.orm import relationship, backref
 from flask_login import UserMixin, LoginManager
-from .app import db
+from app import db
 
 login = LoginManager()
 
@@ -32,7 +32,7 @@ class Recommendation(db.Model):
     id = sqa.Column(sqa.Integer(), primary_key=True, index=True)
 
     # Sender
-    sent_by = sqa.Column(sqa.Integer(), sqa.ForeignKey("users.id"))
+    sent_by = sqa.Column(sqa.Integer(), sqa.ForeignKey("users.id"), nullable=False)
     sender_priority = sqa.Column(sqa.Integer())
 
     # Receiver
