@@ -21,7 +21,6 @@ class Media(db.Model):
     id = sqa.Column(sqa.Integer(), primary_key=True, index=True)
     title = sqa.Column(sqa.String(), nullable=False)
     type = sqa.Column(sqa.Integer(), nullable=False)  # Book, movie, anime, manga, video game, webcomic, song, other
-    version_specific = sqa.Column(sqa.Boolean())  # e.g., "I recommend SPECIFICALLY the anime, not the manga"
     # length
     # cost
 
@@ -38,3 +37,6 @@ class Recommendation(db.Model):
     # Receiver
     sent_to = sqa.Column(sqa.Integer(), sqa.ForeignKey("users.id"), nullable=False)
     personal_priority = sqa.Column(sqa.Integer())
+
+    # Media
+    version_specific = sqa.Column(sqa.Boolean())  # e.g., "I recommend SPECIFICALLY the anime, not the manga"
