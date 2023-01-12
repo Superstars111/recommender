@@ -52,7 +52,7 @@ def register_post():
         flash("This email is already in use")
         return redirect(url_for("AUTH_BLUEPRINT.register"))
 
-    new_user = User(email=email, username=username, password=generate_password_hash(password, method="sha256"))
+    new_user = User(email=email, username=username, password_hash=generate_password_hash(password, method="sha256"))
     db.session.add(new_user)
     db.session.commit()
 
@@ -62,6 +62,6 @@ def register_post():
 @AUTH_BLUEPRINT.route("/logout")
 @login_required
 def logout():
-    session.pop("selected_shows", None)
+    session.pop("selected_shows", None)  # TODO: Replace with applicable code
     logout_user()
     return redirect(url_for("GENERAL_BLUEPRINT.index"))
