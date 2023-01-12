@@ -8,13 +8,11 @@ from app import db
 
 AUTH_BLUEPRINT = Blueprint("auth", __name__)
 
-TEMPLATE_PATH = "templates/auth"
-
 
 @AUTH_BLUEPRINT.route("/login")
 def login():
 
-    return render_template(f"{TEMPLATE_PATH}/login.html")
+    return render_template("auth/login.html")
 
 
 @AUTH_BLUEPRINT.route("/login", methods=["POST"])
@@ -36,7 +34,7 @@ def login_post():
 @AUTH_BLUEPRINT.route("/register")
 def register():
 
-    return render_template(f"{TEMPLATE_PATH}/register.html")
+    return render_template("auth/register.html")
 
 
 @AUTH_BLUEPRINT.route("/register", methods=["POST"])
