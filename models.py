@@ -20,7 +20,8 @@ class Media(db.Model):
 
     id = sqa.Column(sqa.Integer(), primary_key=True, index=True)
     title = sqa.Column(sqa.String(), nullable=False)
-    type = sqa.Column(sqa.Integer(), nullable=False)  # Book, movie, anime, manga, video game, webcomic, song, other
+    type = sqa.Column(sqa.Integer(), nullable=False)  # Book, movie, anime, manga, video game, webcomic, song, visual novel, other
+    # Possibly include subclasses for different media types
     # length
     # cost
 
@@ -33,6 +34,7 @@ class Recommendation(db.Model):
     # Sender
     sent_by = sqa.Column(sqa.Integer(), sqa.ForeignKey("users.id"), nullable=False)
     sender_priority = sqa.Column(sqa.Integer())
+    notes = sqa.Column(sqa.Text())  # Include sections and/or prompts for why you'd like it, what it's similar to, etc.
 
     # Receiver
     sent_to = sqa.Column(sqa.Integer(), sqa.ForeignKey("users.id"), nullable=False)
