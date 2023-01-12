@@ -26,7 +26,9 @@ from models import User  # Needed lower than top to prevent circular import. The
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# TODO: Put blueprints here
+# Blueprints
+from .auth.auth import AUTH_BLUEPRINT as AUTH_BLUEPRINT
+app.register_blueprint(AUTH_BLUEPRINT)
 
 
 @app.route('/')
